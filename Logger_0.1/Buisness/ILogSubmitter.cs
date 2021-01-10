@@ -8,7 +8,7 @@ namespace FabricationLogger.Buisness
 {
     interface ILogSubmitter
     {
-        void SubmitLog();
+        void SubmitLogEntry();
         void SetLog(ILog log); 
     }
 }

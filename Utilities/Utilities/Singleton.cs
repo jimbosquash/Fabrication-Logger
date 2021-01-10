@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace JamesHayward.Utilities
+namespace Utilities
 {
     public abstract class Singleton<T> where T : Singleton<T>
     {

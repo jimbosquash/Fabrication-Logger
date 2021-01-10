@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Threading;
-using System.Threading.Tasks;
 using FabricationLogger.LogWindowUI;
 using FabricationLogger.Buisness;
-using JamesHayward.Utilities;
+using Utilities;
 
 
 namespace FabricationLogger

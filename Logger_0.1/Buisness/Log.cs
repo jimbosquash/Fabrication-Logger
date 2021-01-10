@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FabricationLogger.Buisness;
-using JamesHayward.Utilities;
+using Utilities;
 
 namespace FabricationLogger.Buisness
 {

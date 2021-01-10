@@ -5,20 +5,16 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using JamesHayward.Utilities;
+using Utilities;
 
-/// <Notes>
-/// Problem - Proper closure of Socket currently not working
-/// Meaning that a socket can not be choosen twice. this
-/// needs to be mentioned in the window for the user also.
-/// </Notes>
+/// <summary>
+/// Listening through UDP local sockets. Temp method for client review
+/// TCP Server to be implimented next checkpoint  
+/// </summary>
 namespace FabricationLogger.Buisness
 {
-    
 
     class UDPListener : Singleton<UDPListener>, ILogSubmitter, INotifyPropertyChanged
     {
@@ -101,12 +97,12 @@ namespace FabricationLogger.Buisness
                 _messageText = value;
                 if (PropertyChanged != null)
                 {
-                    SubmitLog();
+                    SubmitLogEntry();
                 }
             }
         }
 
-        public void SubmitLog()
+        public void SubmitLogEntry()
         {
             if (_log != null)
                 _log.SubmitLog(_messageTimeStamp, _messageText);

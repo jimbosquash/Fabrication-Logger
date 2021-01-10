@@ -10,3 +10,6 @@ C:\Users\hhayw\source\repos\Logger_0.1\obj\Debug\FabricationLogger.g.resources
 C:\Users\hhayw\source\repos\Logger_0.1\obj\Debug\Logger_0.1.csproj.CoreCompileInputs.cache
 C:\Users\hhayw\source\repos\Logger_0.1\obj\Debug\FabricationLogger.exe
 C:\Users\hhayw\source\repos\Logger_0.1\obj\Debug\FabricationLogger.pdb
+C:\Users\hhayw\source\repos\Logger_0.1\bin\Debug\JamesHayward.dll
+C:\Users\hhayw\source\repos\Logger_0.1\bin\Debug\JamesHayward.pdb
+C:\Users\hhayw\source\repos\Logger_0.1\obj\Debug\Logger_0.1.csproj.CopyComplete

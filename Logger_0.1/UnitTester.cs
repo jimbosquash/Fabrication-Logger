@@ -1,11 +1,7 @@
 ﻿using FabricationLogger.Buisness;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FabricationLogger
 {
@@ -14,7 +10,6 @@ namespace FabricationLogger
         /// <summary>
         /// Testing codes, please disable them once debuging checked
         /// </summary>
-        /// 
 
         public static void RunUnitTests()
         {
