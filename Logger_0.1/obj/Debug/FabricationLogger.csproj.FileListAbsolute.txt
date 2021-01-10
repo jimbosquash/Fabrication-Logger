@@ -1,0 +1,12 @@
+C:\Users\hhayw\source\repos\FabricationLogger\bin\Debug\FabricationLogger.exe.config
+C:\Users\hhayw\source\repos\FabricationLogger\bin\Debug\FabricationLogger.exe
+C:\Users\hhayw\source\repos\FabricationLogger\bin\Debug\FabricationLogger.pdb
+C:\Users\hhayw\source\repos\FabricationLogger\obj\Debug\FabricationLogger.csproj.CoreCompileInputs.cache
+C:\Users\hhayw\source\repos\FabricationLogger\obj\Debug\FabricationLogger.exe
+C:\Users\hhayw\source\repos\FabricationLogger\obj\Debug\FabricationLogger.pdb
+C:\Users\hhayw\source\repos\FabricationLogger\obj\Debug\FabricationLogger.csprojAssemblyReference.cache
+C:\Users\hhayw\source\repos\FabricationLogger\obj\Debug\LogWindowUI\MainWindow.g.cs
+C:\Users\hhayw\source\repos\FabricationLogger\obj\Debug\FabricationLogger_MarkupCompile.cache
+C:\Users\hhayw\source\repos\FabricationLogger\obj\Debug\FabricationLogger_MarkupCompile.lref
+C:\Users\hhayw\source\repos\FabricationLogger\obj\Debug\LogWindowUI\MainWindow.baml
+C:\Users\hhayw\source\repos\FabricationLogger\obj\Debug\FabricationLogger.g.resources
