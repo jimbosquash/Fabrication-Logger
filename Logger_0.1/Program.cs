@@ -23,18 +23,24 @@ namespace FabricationLogger
 
     class Program
     {
+        public static ILog Log;
+        public static ListenerBase Listener;
+        public static ILogPublisher Publisher;
+        public static ILogSubmitter LogSubmitter;
+
         static void Main(string[] args)
         {
-            Log FabricationLog = Log.Instance;
+            // Create Models for MVVM pattern
+            Log = Buisness.Log.Instance;
+            Listener = Factory.CreateNewListener(Log);
+            Publisher = Factory.CreateNewPublisher(Log);
 
-            // intialization step
-            UDPListener.Instance.SetLog(FabricationLog);
-            CSVPublisher.Instance.SetLog(FabricationLog);
+            // Create Instance of View Model and then Create View 
             LoggerUI.Instance.CreateApp(new System.Windows.Rect(0, 0, 1000, 600));
-            LoggerUI.Instance.SetLog(FabricationLog);
+            LoggerUI.Instance.SetDependencies(Log, Publisher, Listener);
 
             // <Test Zone>
-            UnitTester.RunUnitTests();
+            UnitTester.RunUnitTests(Listener,Publisher);
             // <\Test Zone End>
         }
     }

@@ -1,0 +1,9 @@
+C:\Users\hhayw\source\repos\Libraries\JamesHayward\bin\Debug\netstandard2.0\JamesHayward.deps.json
+C:\Users\hhayw\source\repos\Libraries\JamesHayward\bin\Debug\netstandard2.0\JamesHayward.dll
+C:\Users\hhayw\source\repos\Libraries\JamesHayward\bin\Debug\netstandard2.0\JamesHayward.pdb
+C:\Users\hhayw\source\repos\Libraries\JamesHayward\obj\Debug\netstandard2.0\JamesHayward.csprojAssemblyReference.cache
+C:\Users\hhayw\source\repos\Libraries\JamesHayward\obj\Debug\netstandard2.0\JamesHayward.csproj.CoreCompileInputs.cache
+C:\Users\hhayw\source\repos\Libraries\JamesHayward\obj\Debug\netstandard2.0\JamesHayward.AssemblyInfoInputs.cache
+C:\Users\hhayw\source\repos\Libraries\JamesHayward\obj\Debug\netstandard2.0\JamesHayward.AssemblyInfo.cs
+C:\Users\hhayw\source\repos\Libraries\JamesHayward\obj\Debug\netstandard2.0\JamesHayward.dll
+C:\Users\hhayw\source\repos\Libraries\JamesHayward\obj\Debug\netstandard2.0\JamesHayward.pdb

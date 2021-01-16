@@ -19,7 +19,20 @@ namespace FabricationLogger
     {
         private App m_application;
         private ILog _log;
+        public ListenerBase Listener;
         public event EventHandler<LogEnteredEventArgs> OnNewLogEntered;
+
+        public void SetListener(ListenerBase listener)
+        {
+            Listener = listener;
+
+            m_application.Dispatcher.BeginInvoke((Action)delegate
+            {
+                Debug.Assert(m_application.MainWindow != null);
+
+                (m_application.MainWindow as MainWindow).Listener = Listener;
+            });
+        }
 
         private void OnLogEntered(object sender, LogEnteredEventArgs e)
         {
@@ -31,6 +44,16 @@ namespace FabricationLogger
             CreateUIApp(dimensions);
             ConfigureUILogTags();
             
+        }
+
+        /// <summary>
+        /// could be thought of as setting models
+        /// </summary>
+        public void SetDependencies(ILog log,ILogPublisher publisher, ListenerBase listener)
+        {
+            SetLog(log);
+            BindToListener(listener);
+            BindToPublisher(publisher);
         }
 
         public void SetLog(ILog log)
@@ -66,7 +89,7 @@ namespace FabricationLogger
             Thread t = new Thread(() =>
             {
                 m_application = new App();
-                MainWindow window = new MainWindow
+                MainWindow window = new MainWindow()
                 {
                     // set window dimensions
                     WindowStartupLocation = WindowStartupLocation.Manual,
@@ -92,6 +115,25 @@ namespace FabricationLogger
             windowCreatedEvent.WaitOne();
         }
         
+        public void BindToListener(ListenerBase listener)
+        {
+            Debug.Assert(m_application != null);
+
+            m_application.Dispatcher.BeginInvoke((Action)delegate
+            {
+                (m_application.MainWindow as MainWindow).BindToListener(listener);
+            });
+        }
+
+        public void BindToPublisher(ILogPublisher publisher)
+        {
+            Debug.Assert(m_application != null);
+
+            m_application.Dispatcher.BeginInvoke((Action)delegate
+            {
+                (m_application.MainWindow as MainWindow).BindToPublisher(publisher);
+            });
+        }
         public void Add(LogEntry logEntry)
         {
             Debug.Assert(m_application != null);

@@ -10,7 +10,7 @@ using Utilities;
 
 namespace FabricationLogger.Buisness
 {
-    class CSVPublisher : Singleton<CSVPublisher>,ILogPublisher,INotifyPropertyChanged
+    class CSVPublisher : ILogPublisher,INotifyPropertyChanged
     {
         private ILog _log;
         private string _path = "D:\\";
@@ -21,6 +21,11 @@ namespace FabricationLogger.Buisness
         private string _debugLog = "";
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public CSVPublisher(ILog log)
+        {
+            _log = log;
+        }
 
         public string DebugLog
         {

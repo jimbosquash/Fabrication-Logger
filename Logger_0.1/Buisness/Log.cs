@@ -1,12 +1,5 @@
-﻿using FabricationLogger.LogWindowUI;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FabricationLogger.Buisness;
 using Utilities;
 
 namespace FabricationLogger.Buisness
@@ -16,7 +9,7 @@ namespace FabricationLogger.Buisness
     /// </summary>
     class Log : Singleton<Log>, ILog
     {
-        private ObservableCollection<LogEntry> _logEntries = new ObservableCollection<LogEntry>();
+        protected ObservableCollection<LogEntry> _logEntries = new ObservableCollection<LogEntry>();
 
         public event EventHandler<LogEnteredEventArgs> LogEnteredEventHandler;
 

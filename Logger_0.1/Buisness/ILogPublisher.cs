@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace FabricationLogger.Buisness
 {
-    interface ILogPublisher
+    public interface ILogPublisher
     {
         void Publish();
         void SetLog(ILog log);
+        string GetFilePath();
+
+        string FileName { get; set; }
+        string FilePath { get; set; }
     }
 }

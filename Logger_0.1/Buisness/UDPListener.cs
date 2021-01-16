@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -16,7 +13,7 @@ using Utilities;
 namespace FabricationLogger.Buisness
 {
 
-    class UDPListener : Singleton<UDPListener>, ILogSubmitter, INotifyPropertyChanged
+    class UDPListener : ListenerBase, ILogSubmitter, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -33,14 +30,14 @@ namespace FabricationLogger.Buisness
         private bool _messageReceived = false;
         private string _debugLog = "";
 
-        public bool IsEnabled() { return _go; }
+        public override bool IsEnabled() { return _go; }
 
         private void NotifyPropertyChange([CallerMemberName] string PropertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
         }
 
-        public string DebugLog
+        public override string DebugLog
         {
             get
             {
@@ -54,7 +51,7 @@ namespace FabricationLogger.Buisness
             }
         }
 
-        public string IP
+        public override string IP
         {
             get
             {
@@ -70,7 +67,7 @@ namespace FabricationLogger.Buisness
             }
         }
 
-        public int Port
+        public override int Port
         {
             get
             {
@@ -86,7 +83,7 @@ namespace FabricationLogger.Buisness
             }
         }
 
-        public string Message
+        public override string Message
         {
             get
             {
@@ -115,11 +112,11 @@ namespace FabricationLogger.Buisness
             _log = newLog;
         }
 
-        public void Start()
+        public override void Start()
         {
             if (_udpClient == null)
             {
-                SetUP();
+                SetUp();
             }
             else if(_port != _listenPort)
             {
@@ -130,7 +127,7 @@ namespace FabricationLogger.Buisness
             Tick();
         }
 
-        private void SetUP()
+        protected override void SetUp()
         {
             try
             {
@@ -143,8 +140,8 @@ namespace FabricationLogger.Buisness
             }
         }
 
-        private void UpdateAddress()
-        {    
+        protected override void UpdateAddress()
+        {
             try
             {
                 _port = _listenPort;
@@ -158,13 +155,13 @@ namespace FabricationLogger.Buisness
             }
         }
 
-        public void Pause()
+        public override void Pause()
         {
             _go = false;
             DebugLog = ("\n UDP Receiver paused");
         }
 
-        private void Tick()
+        protected override void Tick()
         {
             //If we already had started receiving
             if (_begunReceiving)
@@ -250,7 +247,7 @@ namespace FabricationLogger.Buisness
             return false;
         }
 
-        private void StopReceiving()
+        protected override void StopReceiving()
         {
             try
             {

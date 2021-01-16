@@ -63,12 +63,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Buisness\CustomEvents.cs" />
+    <Compile Include="Buisness\Factory.cs" />
+    <Compile Include="Buisness\ListenerBase.cs" />
     <Compile Include="Buisness\ILog.cs" />
     <Compile Include="Buisness\ILogPublisher.cs" />
     <Compile Include="Buisness\ILogSubmitter.cs" />
     <Compile Include="Buisness\UDPListener.cs" />
     <Compile Include="LoggerUI.cs" />
-    <Compile Include="Buisness\LogPublisher.cs" />
+    <Compile Include="Buisness\CSVPublisher.cs" />
     <Compile Include="Buisness\Log.cs" />
     <Compile Include="LogWindowUI\App.cs" />
     <Compile Include="Buisness\LogEntry.cs" />

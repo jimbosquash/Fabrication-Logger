@@ -36,7 +36,8 @@ namespace FabricationLogger.LogWindowUI
 
         public bool IsAutoScrollEnabled { get; set; }
         public string FilePath { get; set; }
-
+        public ListenerBase Listener { get; set; }
+        public ILogPublisher Publisher { get; set; }
 
         public MainWindow()
         {
@@ -56,14 +57,26 @@ namespace FabricationLogger.LogWindowUI
             Systems.ItemsSource = LogSystems;
             Levels.ItemsSource = LogLevels;
 
-            FileHeaderText.DataContext = CSVPublisher.Instance;
-            FileNameTextBox.DataContext = CSVPublisher.Instance;
-            FilePathTextBox.DataContext = CSVPublisher.Instance;
-            PublishStatusText.DataContext = CSVPublisher.Instance;
+                  
+        }
 
-            PortBox.DataContext = UDPListener.Instance;
-            IPAddressBox.DataContext = UDPListener.Instance;
-            NetworkStatusText.DataContext = UDPListener.Instance;
+        public void BindToListener(ListenerBase listener)
+        {
+            Listener = listener;
+
+            PortBox.DataContext = Listener;
+            IPAddressBox.DataContext = Listener;
+            NetworkStatusText.DataContext = Listener;
+        }
+
+        public void BindToPublisher(ILogPublisher publisher)
+        {
+            Publisher = publisher;
+
+            FileHeaderText.DataContext = Publisher;
+            FileNameTextBox.DataContext = Publisher;
+            FilePathTextBox.DataContext = Publisher;
+            PublishStatusText.DataContext = Publisher;
         }
 
         /// <summary>
@@ -183,10 +196,10 @@ namespace FabricationLogger.LogWindowUI
         {
             Button logButton = sender as Button;
 
-            if (UDPListener.Instance.IsEnabled())
+            if (Listener.IsEnabled())
             {
                 // stop listening
-                UDPListener.Instance.Pause();
+                Listener.Pause();
                 PortBox.IsEnabled = true;
                 IPAddressBox.IsEnabled = true;
                 logButton.Content = "START LISTENING";
@@ -197,7 +210,7 @@ namespace FabricationLogger.LogWindowUI
                 // start listening
                 try
                 {
-                    UDPListener.Instance.Start();
+                    Listener.Start();
                     PortBox.IsEnabled = false;
                     IPAddressBox.IsEnabled = false;
                     logButton.Content = "STOP LISTENING";
@@ -212,7 +225,7 @@ namespace FabricationLogger.LogWindowUI
 
         private void PublishToFile_Click(object sender, RoutedEventArgs e)
         {
-            CSVPublisher.Instance.Publish();
+            Publisher.Publish();
         }
     }
 }
