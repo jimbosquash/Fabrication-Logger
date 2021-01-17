@@ -39,7 +39,7 @@ namespace FabricationLogger.Buisness
 
         public UDPListener()
         {
-            SetUp();
+            FindIP();
         }
 
         public override string DebugLog
@@ -134,17 +134,20 @@ namespace FabricationLogger.Buisness
             Tick();
         }
 
+        private void FindIP()
+        {
+            // find out local Ip by connecting socket and gettting address
+            var socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0);
+            socket.Connect("8.8.8.8", 65530); // random numbers used
+            IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
+            _ip = endPoint.Address.ToString();
+            Console.Write("\n Ip found : " + _ip);
+        }
+
         protected override void SetUp()
         {
             try
             {
-                
-                var socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0);
-                socket.Connect("8.8.8.8", 65530);
-                IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
-                _ip = endPoint.Address.ToString();
-                Console.Write("\n Ip found : " + _ip);
-                //socket.Disconnect(true);
                 IPEndPoint remoteIP = new IPEndPoint(IPAddress.Parse(_ip), _listenPort);
                 _udpClient = new UdpClient(remoteIP);
             }
