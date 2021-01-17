@@ -40,7 +40,7 @@ namespace FabricationLogger
             LoggerUI.Instance.SetDependencies(Log, Publisher, Listener);
 
             // <Test Zone>
-            UnitTester.RunUnitTests(Listener,Publisher);
+            //UnitTester.RunUnitTests(Listener,Publisher);
             // <\Test Zone End>
         }
     }

@@ -20,7 +20,7 @@ namespace FabricationLogger.Buisness
         private ILog _log;
         private string _messageText = "";
         private DateTime _messageTimeStamp;
-        private string _ip = "192.168.0.104";
+        private string _ip = "";
         private int _listenPort = 30002;
         private int _port;
 
@@ -35,6 +35,11 @@ namespace FabricationLogger.Buisness
         private void NotifyPropertyChange([CallerMemberName] string PropertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+        }
+
+        public UDPListener()
+        {
+            SetUp();
         }
 
         public override string DebugLog
@@ -99,6 +104,8 @@ namespace FabricationLogger.Buisness
             }
         }
 
+
+
         public void SubmitLogEntry()
         {
             if (_log != null)
@@ -131,6 +138,13 @@ namespace FabricationLogger.Buisness
         {
             try
             {
+                
+                var socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0);
+                socket.Connect("8.8.8.8", 65530);
+                IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
+                _ip = endPoint.Address.ToString();
+                Console.Write("\n Ip found : " + _ip);
+                //socket.Disconnect(true);
                 IPEndPoint remoteIP = new IPEndPoint(IPAddress.Parse(_ip), _listenPort);
                 _udpClient = new UdpClient(remoteIP);
             }
