@@ -28,6 +28,7 @@ namespace FabricationLogger.Buisness
 
         public void SubmitLog(DateTime timeStamp, string message)
         {
+
             AddLogEntry(CreateLogEntry(timeStamp, message));
         }
 

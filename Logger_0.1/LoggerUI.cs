@@ -66,7 +66,7 @@ namespace FabricationLogger
         {
             Instance.ConfigureSytems(new List<string>
             {
-                "UNKNOWN",
+                "UNKNOWN",// 
                 "TEST",
                 "ROBOT",
                 "SENSOR 1",
